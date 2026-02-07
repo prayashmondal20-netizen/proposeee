@@ -6,60 +6,69 @@
     <title>For My Pukkii ❤️</title>
     <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
     <style>
-        :root { --soft-pink: #ffdae0; --deep-rose: #ff4d6d; --glass: rgba(255, 255, 255, 0.9); }
-        * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+        :root { --soft-pink: #ffdae0; --deep-rose: #ff4d6d; --glass: rgba(255, 255, 255, 0.95); }
+        * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; outline: none; }
         
         body {
             margin: 0; font-family: 'Poppins', sans-serif;
             background: linear-gradient(135deg, #fff0f3 0%, #ffdae0 100%);
             height: 100vh; display: flex; justify-content: center; align-items: center;
-            overflow: hidden;
+            overflow: hidden; touch-action: manipulation;
         }
 
         .glass-card {
-            background: var(--glass); backdrop-filter: blur(10px);
+            background: var(--glass); backdrop-filter: blur(12px);
             padding: 25px; border-radius: 30px; text-align: center;
-            width: 90%; max-width: 360px; z-index: 10;
+            width: 92%; max-width: 360px; z-index: 10;
             border: 1px solid rgba(255, 255, 255, 0.5);
             box-shadow: 0 10px 30px rgba(255, 77, 109, 0.15);
-            position: relative; overflow: hidden;
+            position: relative;
         }
 
-        .slide { display: none; opacity: 0; transition: opacity 0.4s ease-in-out; }
+        .slide { display: none; opacity: 0; transition: opacity 0.5s ease-in-out; }
         .active { display: block; opacity: 1; }
 
-        h2 { font-family: 'Dancing Script', cursive; color: var(--deep-rose); font-size: 1.7rem; margin: 10px 0; }
+        h2 { font-family: 'Dancing Script', cursive; color: var(--deep-rose); font-size: 1.75rem; margin: 10px 0; }
         p { color: #7d5a5a; font-size: 0.85rem; line-height: 1.5; }
 
-        /* Puzzle */
+        /* Hidden Password Input */
+        input[type="password"] { 
+            padding: 15px; border-radius: 20px; border: 2px solid #ffccd5;
+            width: 100%; text-align: center; font-size: 1.5rem; margin-bottom: 15px;
+            color: var(--deep-rose); background: white; letter-spacing: 5px;
+        }
+
+        /* Puzzle Styling */
         #puzzle-board {
             display: grid; grid-template-columns: repeat(2, 1fr);
             gap: 10px; margin: 15px auto; width: 220px; height: 220px;
         }
         .tile {
-            width: 105px; height: 105px; background-size: 210px 210px;
-            border-radius: 15px; border: 3px solid white; transition: transform 0.2s;
+            width: 105px; height: 105px; 
+            background-size: 210px 210px;
+            border-radius: 15px; border: 3px solid white;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            transition: transform 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
         }
-        .selected { border-color: var(--deep-rose); transform: scale(0.95); }
+        .selected { border-color: var(--deep-rose); transform: scale(0.92); box-shadow: 0 0 15px var(--deep-rose); }
 
         /* Buttons */
         button {
             padding: 14px; border: none; border-radius: 20px;
             background: var(--deep-rose); color: white; width: 100%;
             font-weight: 600; margin-top: 10px; font-size: 0.95rem;
-            box-shadow: 0 4px 10px rgba(255, 77, 109, 0.2);
-            transition: 0.3s ease; cursor: pointer;
+            box-shadow: 0 4px 12px rgba(255, 77, 109, 0.25);
+            transition: 0.3s ease;
         }
         .btn-small { width: 46%; font-size: 0.85rem; padding: 12px 5px; }
-        .next-btn { background: #5a5a5a !important; display: none; }
+        .next-btn { background: #5a5a5a !important; display: none; margin-top: 15px; }
 
-        /* Final Scrollable Letter */
-        #final-letter { max-height: 70vh; overflow-y: auto; text-align: left; padding: 5px; }
+        #final-letter { max-height: 72vh; overflow-y: auto; text-align: left; padding: 5px; }
 
-        .flower { position: fixed; top: -10%; font-size: 24px; animation: fall linear forwards; z-index: 5; pointer-events: none; }
+        .flower { position: fixed; top: -10%; font-size: 24px; animation: fall linear forwards; z-index: 20; pointer-events: none; }
         @keyframes fall { to { transform: translateY(110vh) rotate(360deg); } }
         
-        @keyframes heartbeat { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.05); } }
+        @keyframes heartbeat { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.06); } }
         .pulse { animation: heartbeat 1.5s infinite; }
     </style>
 </head>
@@ -70,8 +79,8 @@
 
         <div id="slide1" class="slide active">
             <h2>Hush... ❤️</h2>
-            <p>A secret awaits you, Pratyusha.</p>
-            <input type="number" id="passInput" pattern="\d*" inputmode="numeric" placeholder="Enter Code" style="padding:15px; border-radius:20px; border:2px solid #ffccd5; width:100%; text-align:center; font-size:1.2rem; margin-bottom:10px;">
+            <p>A secret for my Pukkii</p>
+            <input type="password" id="passInput" inputmode="numeric" placeholder="••••••">
             <button onclick="checkPass()">Unlock Love</button>
         </div>
 
@@ -80,15 +89,15 @@
             <button id="btnA" onclick="drawGuideLine('btnA')">A) Me ✨</button>
             <button id="btnB" onclick="drawGuideLine('btnB')">B) You ✨</button>
             <button id="btnC" onclick="triggerOptionC()" style="background: #ff758c;">C) Both Of Us ✨</button>
-            <button id="next2" class="next-btn" onclick="nextSlide(3)">Continue ➡️</button>
+            <button id="next2" class="next-btn" onclick="nextSlide(3)">Continue ❤️</button>
         </div>
 
         <div id="slide3" class="slide">
             <h2 id="puzz-head">Fix Our Memory 🧩</h2>
             <div id="puzzle-board"></div>
             <div id="message-area" style="display:none;">
-                <p style="color: var(--deep-rose); font-weight: 600; margin-bottom:5px;">Today Is Propose Day ❤️🌸</p>
-                <div style="font-size: 0.8rem; line-height: 1.4;">
+                <p style="color: var(--deep-rose); font-weight: 600; margin-bottom: 5px;">Today Is Propose Day ❤️🌸</p>
+                <div style="font-size: 0.8rem; line-height: 1.4; color: #555;">
                     Kuch kehena tha tumse... Tum sunna chahogi kya?<br><br>
                     Zindegi ek chota sa safar ha... Tum mere sath chalna chahogi kya?<br><br>
                     Aur jab mujhe neend na ayee... Tum mujhe apni gaud me sulaayogi kya?<br><br>
@@ -101,7 +110,7 @@
         <div id="slide4" class="slide">
             <h2 style="font-size: 1.3rem;">"Will you hold my hand today and always, and be my forever?" 💍❤️</h2>
             <div style="display: flex; justify-content: space-around; margin-top: 20px;">
-                <button class="btn-small pulse" onclick="finalYes()">YES 🧿</button>
+                <button class="btn-yes btn-small pulse" onclick="finalYes()">YES 🧿</button>
                 <button id="noBtn" class="btn-small" style="background:#8e9aaf;" onmouseover="moveNo()" onclick="moveNo()">NO 🥺</button>
             </div>
         </div>
@@ -113,7 +122,7 @@
                 <hr style="border: 0; border-top: 1px solid #ffccd5; margin: 10px 0;">
                 <p><b>I don’t promise a perfect life, but I promise a real one --> full of care, respect, and endless love..</b></p>
                 <p>I love U Every second, Every Minute, Every hour, Every day, Every Night, Every Month, Every Year And Upcoming Year, Every Season... 🧿</p>
-                <p style="text-align: center; font-size: 1.1rem; margin:10px 0;">❤️❤️🧿🫶🏻🧿❤️❤️</p>
+                <div style="text-align: center; font-size: 1.2rem; margin:10px 0;">❤️❤️🧿🫶🏻🧿❤️❤️</div>
                 <h2 style="text-align: center; font-size: 1.1rem; color: #e63946;">Our Forever Starts Now! ♾️</h2>
             </div>
         </div>
@@ -130,21 +139,16 @@
 
         function nextSlide(n) {
             clearCanvas();
-            const slides = document.querySelectorAll('.slide');
-            slides.forEach(s => s.classList.remove('active'));
-            setTimeout(() => {
-                slides.forEach(s => s.style.display = 'none');
-                const next = document.getElementById('slide' + n);
-                next.style.display = 'block';
-                setTimeout(() => next.classList.add('active'), 50);
-            }, 100);
+            document.querySelectorAll('.slide').forEach(s => { s.classList.remove('active'); s.style.display = 'none'; });
+            const next = document.getElementById('slide' + n);
+            next.style.display = 'block';
+            setTimeout(() => next.classList.add('active'), 50);
             if(n === 3) initPuzzle();
         }
 
         function clearCanvas() {
             const canvas = document.getElementById('guideCanvas');
-            const ctx = canvas.getContext('2d');
-            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            canvas.getContext('2d').clearRect(0, 0, canvas.width, canvas.height);
         }
 
         function drawGuideLine(fromBtnId) {
@@ -169,7 +173,7 @@
         }
 
         function startFlowerRain() {
-            for(let i=0; i<25; i++) {
+            for(let i=0; i<20; i++) {
                 setTimeout(() => {
                     const f = document.createElement('div');
                     f.className = 'flower'; f.innerHTML = '🌸';
@@ -186,7 +190,7 @@
             shuffled.forEach((tileNum, i) => {
                 const div = document.createElement('div');
                 div.className = 'tile';
-                div.style.backgroundImage = `url(${imgUrl})`;
+                div.style.backgroundImage = `url('${imgUrl}')`;
                 div.style.backgroundPosition = `${(tileNum % 2) * -105}px ${Math.floor(tileNum / 2) * -105}px`;
                 div.onclick = () => handleTileClick(i);
                 board.appendChild(div);
@@ -204,12 +208,11 @@
                 initPuzzle();
                 if (JSON.stringify(tiles) === JSON.stringify(shuffled)) {
                     document.getElementById('puzzle-board').style.display = 'none';
-                    document.getElementById('puzz-head').innerText = "Unlocked for You... ✨";
+                    document.getElementById('puzz-head').innerText = "For You, Pukkii... ✨";
                     setTimeout(() => {
                         document.getElementById('puzz-head').style.display = 'none';
                         document.getElementById('message-area').style.display = 'block';
-                        startFlowerRain();
-                    }, 1000);
+                    }, 800);
                 }
             }
         }
