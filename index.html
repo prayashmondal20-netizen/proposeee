@@ -2,181 +2,231 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>For My Pratyusha 🧸💓🧿</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>For My Forever Pratyusha 💓</title>
     <style>
-        :root { --main-pink: #ff4d6d; --soft-pink: #fff0f3; }
-        * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
-
-        body { 
-            background: var(--soft-pink); 
-            font-family: 'Georgia', serif; 
-            text-align: center; 
-            margin: 0; 
-            overflow: hidden; 
-            color: #5a3e3e;
-            height: 100vh;
-            width: 100vw;
+        :root {
+            --pink: #ff4d6d;
+            --soft-pink: #fff0f3;
+            --deep-red: #c9184a;
+            --gold: #ffb703;
         }
-        
-        /* Floating Elements Layer */
-        .floating-container { position: fixed; inset: 0; pointer-events: none; z-index: 1; overflow: hidden; }
-        .float-item { 
-            position: absolute; 
-            bottom: -100px; 
-            opacity: 0; 
-            animation: floatUp 7s linear infinite; 
-            filter: drop-shadow(0 0 5px rgba(255,255,255,0.8));
-        }
-        @keyframes floatUp {
-            0% { transform: translateY(0) rotate(0deg); opacity: 0; }
-            20% { opacity: 0.7; }
-            80% { opacity: 0.7; }
-            100% { transform: translateY(-120vh) rotate(360deg); opacity: 0; }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #fff0f3 0%, #ffdde1 100%);
+            color: #333;
+            text-align: center;
+            margin: 0;
+            padding-bottom: 50px;
+            overflow-x: hidden;
+            min-height: 100vh;
         }
 
-        .screen { 
-            position: fixed; inset: 0; 
-            display: flex; flex-direction: column; 
-            align-items: center; justify-content: center; 
-            padding: 20px; z-index: 10; 
-            background: var(--soft-pink);
+        /* Floating Hearts Background Animation */
+        .bg-heart {
+            position: fixed;
+            color: rgba(255, 77, 109, 0.2);
+            font-size: 20px;
+            z-index: -1;
+            animation: float 10s infinite linear;
         }
-        .hidden { display: none !important; }
-        
-        input { 
-            padding: 15px; border-radius: 15px; border: 2px solid #ffb3c1; 
-            text-align: center; margin-bottom: 15px; width: 85%; 
-            max-width: 280px; font-size: 18px; outline: none; background: white;
-        }
-        
-        button { 
-            background: var(--main-pink); color: white; border: none; 
-            padding: 15px 35px; border-radius: 50px; cursor: pointer; 
-            font-size: 1.1rem; font-weight: bold; width: 85%; max-width: 280px;
-            box-shadow: 0 5px 15px rgba(255, 77, 109, 0.4);
+        @keyframes float {
+            0% { transform: translateY(100vh) rotate(0deg); opacity: 1; }
+            100% { transform: translateY(-10vh) rotate(360deg); opacity: 0; }
         }
 
-        .box-grid { 
-            display: grid; grid-template-columns: repeat(3, 1fr); 
-            gap: 12px; margin: 25px auto; 
-            width: 90%; max-width: 320px;
-        }
-        .box { 
-            aspect-ratio: 1/1; background: #ffb3c1; border-radius: 18px; 
-            display: flex; align-items: center; justify-content: center; 
-            font-size: 2.2rem; box-shadow: 0 5px 12px rgba(0,0,0,0.1); 
-        }
-        
-        .shake-it { animation: shake 0.4s infinite; background: white !important; border: 3px solid var(--main-pink); }
-        @keyframes shake { 0%, 100% { transform: scale(1.1); } 50% { transform: scale(1.1) rotate(8deg); } }
-        
-        #teddy-pop { font-size: 100px; position: absolute; z-index: 100; display: none; }
-        .pop-active { display: block !important; animation: popScale 0.7s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards; }
-        @keyframes popScale { from { transform: scale(0); } to { transform: scale(1.6); } }
+        .section { display: none; padding: 40px 20px; animation: fadeIn 0.8s ease-in-out; }
+        .active { display: block; }
 
-        #scr-final { overflow-y: scroll; display: none; -webkit-overflow-scrolling: touch; padding: 40px 0; }
-        .love-card { 
-            width: 90%; max-width: 450px; padding: 30px; 
-            border-radius: 25px; background: white; 
-            box-shadow: 0 15px 45px rgba(255, 77, 109, 0.25); 
-            margin: 0 auto; text-align: left; 
-        }
-        .fade-in { animation: fadeIn 3s ease-out forwards; }
-        @keyframes fadeIn { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
-        
-        .letter-content { line-height: 1.8; font-size: 1.05rem; color: #444; white-space: pre-line; }
-        .signature { margin-top: 25px; font-weight: bold; color: var(--main-pink); text-align: right; font-size: 1.1rem; }
+        /* Buttons & Inputs */
+        input { padding: 15px; border-radius: 30px; border: 2px solid var(--pink); outline: none; width: 220px; text-align: center; font-size: 1rem; box-shadow: 0 4px 10px rgba(0,0,0,0.05); }
+        button { padding: 15px 30px; border-radius: 30px; background: var(--pink); color: white; border: none; cursor: pointer; font-weight: bold; margin-top: 15px; transition: 0.3s; box-shadow: 0 4px 15px rgba(255, 77, 109, 0.3); font-size: 1rem; }
+        button:hover { background: var(--deep-red); transform: scale(1.05); box-shadow: 0 6px 20px rgba(255, 77, 109, 0.4); }
+
+        /* Letter Box */
+        .letter-box { background: rgba(255, 255, 255, 0.9); padding: 30px; border-radius: 30px; box-shadow: 0 10px 30px rgba(255, 77, 109, 0.15); max-width: 550px; margin: 20px auto; text-align: left; line-height: 1.8; border: 2px solid white; position: relative; }
+        .letter-box::before { content: '💌'; position: absolute; top: -20px; right: 20px; font-size: 2rem; }
+
+        /* Game Section */
+        .grid { display: grid; grid-template-columns: repeat(3, 90px); gap: 15px; justify-content: center; margin: 30px auto; }
+        .box { width: 90px; height: 90px; background: white; border-radius: 20px; cursor: pointer; display: flex; align-items: center; justify-content: center; font-size: 2rem; transition: 0.3s; border: 2px solid #ffccd5; box-shadow: 0 5px 15px rgba(0,0,0,0.05); }
+        .box:hover { transform: scale(1.1); border-color: var(--pink); }
+
+        /* Photos Section */
+        .photo-frame { width: 85%; max-width: 300px; background: white; padding: 15px; border-radius: 15px; box-shadow: 0 15px 35px rgba(0,0,0,0.1); margin: 40px auto; transform: rotate(-2deg); }
+        .photo-frame:nth-child(even) { transform: rotate(2deg); }
+        .photo-frame img { width: 100%; border-radius: 10px; }
+        .caption { font-family: 'Brush Script MT', cursive; font-size: 1.6rem; color: var(--deep-red); margin-top: 10px; }
+
+        /* Hidden Message */
+        #hiddenMsg { display: none; background: #fff; padding: 30px; border-radius: 30px; border: 4px double var(--pink); margin: 30px auto; max-width: 500px; color: var(--deep-red); font-weight: bold; line-height: 1.8; box-shadow: 0 20px 40px rgba(255, 77, 109, 0.2); animation: pop 0.5s ease; }
+
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+        @keyframes pop { 0% { transform: scale(0.8); } 100% { transform: scale(1); } }
+        .confetti { position: fixed; top: -50px; z-index: 999; animation: fall 3s linear forwards; pointer-events: none; }
+        @keyframes fall { to { transform: translateY(110vh) rotate(360deg); } }
     </style>
 </head>
 <body>
 
-    <div class="floating-container" id="bg"></div>
+    <script>
+        for (let i = 0; i < 20; i++) {
+            let heart = document.createElement('div');
+            heart.className = 'bg-heart';
+            heart.innerHTML = '❤️';
+            heart.style.left = Math.random() * 100 + 'vw';
+            heart.style.animationDelay = Math.random() * 10 + 's';
+            document.body.appendChild(heart);
+        }
+    </script>
 
-    <div id="scr-pass" class="screen">
-        <h2 style="color: var(--main-pink); margin-bottom: 20px;">🔒 Private Message</h2>
-        <input type="password" id="passInput" placeholder="Enter password" inputmode="numeric">
-        <button onclick="checkPass()">Unlock</button>
+    <div id="loginSection" class="section active">
+        <h1 style="color: var(--pink); margin-top: 100px; font-size: 2.5rem;">Hello My Love ❤️</h1>
+        <p>Enter our secret code to continue...</p>
+        <input type="password" id="passInput" placeholder="Enter Code Here...">
+        <br>
+        <button onclick="checkPass()">Unlock Our World 💖</button>
     </div>
 
-    <div id="scr-intro" class="screen hidden">
-        <h1 style="color: var(--main-pink); line-height: 1.3;">I have prepared something for u .❤️.</h1>
-        <p style="font-size: 1.2rem;">Let's play the game 🧸💓</p>
-        <button onclick="showGame()">Continue</button>
-    </div>
-
-    <div id="scr-game" class="screen hidden">
-        <h2 style="color: var(--main-pink);">Find Your Teddy!</h2>
-        <p id="status" style="font-weight: bold;">Which gift box? 🎁</p>
-        <div class="box-grid">
-            <script>for(let i=0; i<9; i++) document.write(`<div class="box" onclick="play(this, ${i})">🎁</div>`);</script>
+    <div id="introSection" class="section">
+        <h1 style="color: var(--deep-red); font-size: 2.2rem; margin-top: 50px;">Pratyusha... 💓</h1>
+        <div class="letter-box" style="text-align: center;">
+            <p style="font-size: 1.3rem; font-weight: bold;">I Have Made Something Special For U MY Love 💓</p>
+            <p>I wanted to celebrate "Us" in a way that is as sweet and unique as you are. Let's start with a little surprise...</p>
         </div>
-        <div id="teddy-pop">🧸</div>
+        <button onclick="nextSection('gameSection')">Let's Play! ✨</button>
     </div>
 
-    <div id="scr-final" class="screen">
-        <div class="love-card fade-in">
-            <h2 style="color: var(--main-pink); text-align: center; margin-bottom: 20px;">You Are My Tedddyyyy 🧿🫶🏻😀</h2>
-            <div class="letter-content">
-Happy Teddy Day, my love 🧸❤️
-My Pratyusha 💓...
+    <div id="gameSection" class="section">
+        <h2 style="color: var(--pink);">Find the 3 Secret Rings 💍</h2>
+        <p>Out of 9 boxes, only 3 hold a ring. Can you find them?</p>
+        <p style="font-size: 1.2rem; font-weight: bold;">Rings Found: <span id="count" style="color: var(--pink);">0</span>/3</p>
+        <div class="grid" id="grid"></div>
+        <button id="nextBtn" style="display:none;" onclick="nextSection('promiseSection')">You Found Them! Continue ❤️</button>
+    </div>
 
-Today is Teddy Day, but honestly, every time I think of a teddy, I think of you. A teddy is warm, gentle, and full of love — just like the way you make me feel. Your love wraps around my heart the same way a teddy wraps someone in comfort.
+    <div id="promiseSection" class="section">
+        <h2 style="color: var(--pink);">A Promise From My Heart 💌</h2>
+        <div class="letter-box">
+            <p><strong>My love Pratyusha❤️,</strong></p>
+            <p>On this Promise Day, I want to make simple and true promises to you.</p>
+            <p>I promise to always care for you and respect you. I promise to stand with you in happy times and also when things are hard. I may not be perfect, but I promise to try my best for you every single day.</p>
+            <p>I promise to listen to you, understand your feelings, and support your dreams. When you are tired, I will be there to comfort you. When you smile, I will smile with you.</p>
+            <p>I promise to be honest with you and love you with my whole heart. No matter what happens, my love for you will always stay the same....</p>
+            <p>I love u in every second , every minute, every hour , every day , every year and forever ....</p>
+            <p>You are very special to me, and I am thankful to have you in my life.</p>
+            <p><strong>Happy Promise Day, my love 💓<br>Always yours, Prayash ❤️</strong></p>
+        </div>
+        <button onclick="nextSection('photoSection')">See Our Memories 📸</button>
+    </div>
 
-If I could, I would place a teddy in your arms that carries my heartbeat inside it, so every hug reminds you how deeply I love you. I want you to feel my presence even when I’m not beside you. Just like a teddy never leaves your side at night, my love will stay with you in every moment — through smiles, tears, and silent thoughts.
+    <div id="photoSection" class="section">
+        <h2 style="color: var(--pink);">Our Beautiful Moments 📸</h2>
+        <div class="photo-frame">
+            <img src="https://i.ibb.co/5hCKkJDv/IMG-20260123-WA0032.jpg" alt="Moment 1">
+            <div class="caption">My Favorite Person ❤️</div>
+        </div>
+        <div class="photo-frame">
+            <img src="https://i.ibb.co/zH7NjTRj/IMG-20260130-162324.jpg" alt="Moment 2">
+            <div class="caption">The Cutest Smile ✨</div>
+        </div>
+        <div class="photo-frame">
+            <img src="https://i.ibb.co/WTydgJK/IMG-20260203-WA0003.jpg" alt="Moment 3">
+            <div class="caption">Forever to Go ♾️</div>
+        </div>
+        <br>
+        <button onclick="nextSection('finalSection')">One Last Question... 💍</button>
+    </div>
 
-You are not just someone I love; you are someone I choose every day. Your smile is my favorite view, your voice is my favorite sound, and your love is my greatest blessing. You make my world softer, warmer, and more beautiful just by being in it.
+    <div id="finalSection" class="section">
+        <h1 style="color: var(--pink); padding: 0 10px;">Will You be My Forever And Ever and Ever And Ever?</h1>
+        <div style="margin-top: 40px;">
+            <button onclick="sayYes()" style="font-size: 1.8rem; padding: 20px 60px;">A) Yes... ❤️</button>
+            <br><br>
+            <button onclick="alert('Wrong choice! Try again, beautiful 😉')" style="background: #ccc; font-size: 0.8rem; padding: 10px 30px;">B) No ..</button>
+        </div>
 
-So on this Teddy Day, remember this: hold your teddy close, but know that my heart is holding you even closer.
-I am your teddy. Soft for you, strong for you, and always yours. 🧸❤️
-
-<div class="signature">
-Always yours, always in love. 🧸💖
-My love 💓🧿🧸
-</div>
-            </div>
+        <div id="hiddenMsg">
+            I LOVE YOU PRATYUSHA 💓 FOREVER ... ♾️💓🧿 ... <br><br>
+            TILL THE END OF THIS WORLD AND MY LIFE , U WILL BE MY WIFE , MY 1st BABY , MY LOVE AND MOTHER OF OUR KIDS.. 💓♾️🧿
         </div>
     </div>
 
     <script>
-        const winIdx = Math.floor(Math.random() * 9);
-        const bg = document.getElementById('bg');
-        const icons = ['💓', '🧿', '🧸'];
-
-        for (let i = 0; i < 20; i++) {
-            let item = document.createElement('div');
-            item.className = 'float-item';
-            item.innerText = icons[Math.floor(Math.random() * icons.length)];
-            item.style.left = Math.random() * 100 + 'vw';
-            item.style.animationDelay = (Math.random() * 7) + 's';
-            bg.appendChild(item);
-        }
-
         function checkPass() {
-            if(document.getElementById('passInput').value === "120805") {
-                document.getElementById('scr-pass').classList.add('hidden');
-                document.getElementById('scr-intro').classList.remove('hidden');
-            } else { alert("Wrong password! ❌"); }
-        }
-
-        function showGame() {
-            document.getElementById('scr-intro').classList.add('hidden');
-            document.getElementById('scr-game').classList.remove('hidden');
-        }
-
-        function play(el, idx) {
-            if(idx === winIdx) {
-                el.innerHTML = "🧸";
-                el.classList.add('shake-it');
-                document.getElementById('teddy-pop').classList.add('pop-active');
-                setTimeout(() => {
-                    document.getElementById('scr-game').classList.add('hidden');
-                    document.getElementById('scr-final').style.display = 'block';
-                    document.body.style.overflowY = "auto";
-                }, 2800);
-            } else {
-                el.innerHTML = "❌"; el.style.opacity = '0.3';
+            const pass = document.getElementById('passInput').value;
+            // Updated Password Requirement
+            if(pass === "120805") { 
+                nextSection('introSection'); 
+            } else { 
+                alert("Only for Pratyusha's eyes! ❤️"); 
             }
+        }
+
+        function nextSection(id) {
+            document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+            document.getElementById(id).classList.add('active');
+            window.scrollTo({top: 0, behavior: 'smooth'});
+            if(id === 'gameSection') setupGame();
+        }
+
+        let ringsFound = 0;
+        function setupGame() {
+            const grid = document.getElementById('grid');
+            grid.innerHTML = '';
+            ringsFound = 0;
+            document.getElementById('count').innerText = "0";
+            let ringPositions = [];
+            while(ringPositions.length < 3){
+                let r = Math.floor(Math.random() * 9);
+                if(ringPositions.indexOf(r) === -1) ringPositions.push(r);
+            }
+            
+            for(let i=0; i<9; i++) {
+                const box = document.createElement('div');
+                box.className = 'box';
+                box.innerHTML = '🎁'; 
+                box.onclick = function() {
+                    if(ringPositions.includes(i)) {
+                        if(this.innerHTML !== '💍') {
+                            this.innerHTML = '💍';
+                            this.style.background = '#ffccd5';
+                            ringsFound++;
+                            document.getElementById('count').innerText = ringsFound;
+                            kissConfetti();
+                            if(ringsFound === 3) {
+                                document.getElementById('nextBtn').style.display = 'inline-block';
+                            }
+                        }
+                    } else {
+                        this.innerHTML = '🌸';
+                        this.style.background = '#f9f9f9';
+                        this.style.pointerEvents = 'none';
+                    }
+                };
+                grid.appendChild(box);
+            }
+        }
+
+        function kissConfetti() {
+            for(let i=0; i<30; i++) {
+                const kiss = document.createElement('div');
+                kiss.className = 'confetti';
+                kiss.innerHTML = (Math.random() > 0.5) ? '💋' : '💖';
+                kiss.style.left = Math.random() * 100 + 'vw';
+                kiss.style.fontSize = (Math.random() * 20 + 20) + 'px';
+                kiss.style.animationDuration = (Math.random() * 2 + 1) + 's';
+                document.body.appendChild(kiss);
+                setTimeout(() => kiss.remove(), 3000);
+            }
+        }
+
+        function sayYes() {
+            document.getElementById('hiddenMsg').style.display = 'block';
+            kissConfetti();
+            setTimeout(() => {
+                document.getElementById('hiddenMsg').scrollIntoView({ behavior: 'smooth' });
+            }, 200);
         }
     </script>
 </body>
